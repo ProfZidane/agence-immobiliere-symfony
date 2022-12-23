@@ -1,0 +1,77 @@
+{% extends 'base_dashboard.html.twig' %}
+
+
+{% block body %}
+
+    <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">
+                            Propriétaires
+                            <a href="/utilisateurs/new" class="btn btn-sm btn-primary" style="float: right;" data-toggle="modal" data-target="#exampleModal">+ Nouveaux</a>
+                        </h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Liste Des Propriétaires</li>                           
+                        </ol>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Table des prorpiétaires
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Prénom</th>
+                                            <th>Nom</th>
+                                            <th>Email</th>
+                                            <th>Rôle</th>
+                                            <th>Adresse</th>
+                                            <th>Date</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Prénom</th>
+                                            <th>Nom</th>
+                                            <th>Email</th>
+                                            <th>Rôle</th>
+                                            <th>Adresse</th>
+                                            <th>Date</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for utilisateur in utilisateurs %}
+                                        <tr>
+                                            <td>{{ utilisateur.firstName }}</td>
+                                            <td>{{ utilisateur.lastName }}</td>
+                                            <td>{{ utilisateur.email }}</td>
+                                            <td>{{ utilisateur.role }}</td>
+                                            <td>{{ utilisateur.adress }}</td>
+                                            <td>{{ utilisateur.createdAt ? utilisateur.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-warning" href="{{ path('app_utilisateurs_edit', {'id': utilisateur.id}) }}">Modifier</a>
+                                           </td> 
+                                            <td>
+                                                <form method="post" action="{{ path('app_utilisateurs_delete', {'id': utilisateur.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                    <input type="hidden" name="_token" value="">
+                                                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                                                </form>                                               
+                                            </td>                                           
+                                        </tr>                                    
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Visites{% endblock %}
+
+{% block body %}
+    <h1>Create new Visites</h1>
+
+    {{ include('visites/_form.html.twig') }}
+
+    <a href="{{ path('app_visites_index') }}">back to list</a>
+{% endblock %}

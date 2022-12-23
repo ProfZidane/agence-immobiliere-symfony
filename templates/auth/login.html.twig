@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Administration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}" />
+
+        <link rel="stylesheet" href="{{ asset('css/tiny-slider.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/aos.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+</head>
+<body>
+
+    <div class="container-fluid" style="height:100vh;">
+    <div class="row">
+        <div class="col-md-5 p-5">
+
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <div class="container bg-light p-5 login-container" style="margin-top: 5rem;">
+                <h3 class="mb-4"><a href="/home"><-</a> <strong>CONNEXION</strong></h3>                
+                <form action="/auth/login" method="POST">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Adresse Email</label>
+                      <input type="email" name="email" [(ngModel)]="data.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Mot de passe</label>
+                      <input type="password" name="password" [(ngModel)]="data.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>   
+                    <br><br>   
+                    <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()">Se connecter</button>
+                    <br><br>
+                    <small class="text-primary">
+                        <a href="/register">
+                            Je n'ai pas de compte ! Je veux m'inscrire
+                        </a>
+                    </small>              
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="col-md-7">
+            <img class="mt-5" src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" style="width: 100%; height:100%;" alt="">
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Preloader -->
+        <div id="overlayer"></div>
+        <div class="loader">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/tiny-slider.js') }}"></script>
+        <script src="{{ asset('js/aos.js') }}"></script>
+        <script src="{{ asset('js/navbar.js') }}"></script>
+        <script src="{{ asset('js/counter.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
+    
+</body>
+</html>

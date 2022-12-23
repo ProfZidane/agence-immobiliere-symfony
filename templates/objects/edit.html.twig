@@ -1,0 +1,13 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Edit Objects{% endblock %}
+
+{% block body %}
+    <h1>Modifier un bien</h1>
+
+    {{ include('objects/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_biens_auth') }}">Retour à la liste</a>
+
+    {{ include('objects/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}New Utilisateurs{% endblock %}
+
+{% block body %}
+
+    <div class="p-5 mt-5">
+        <h1>Créer un nouveau propriétaire</h1>
+
+        {{ include('utilisateurs/_form.html.twig') }}
+
+        <a href="{{ path('app_utilisateurs_auth') }}">Retour à la liste</a>
+    </div>
+    
+{% endblock %}
